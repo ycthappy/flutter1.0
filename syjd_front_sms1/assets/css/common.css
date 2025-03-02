@@ -1,0 +1,23 @@
+.fixedWrap {
+	position: fixed;
+	bottom: 100px;
+	left: 0;
+	right: 0;
+}
+
+.page{
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.d-bg-yellow{
+	background-color: #fbbf24ee;
+}
+.d-bg-yellow:active{
+	opacity: 0.6;
+}
+#myButton {
+	max-width: 800px;
+	box-shadow: 5px 5px 10px #000000;
+	margin: 0 20px;
+}

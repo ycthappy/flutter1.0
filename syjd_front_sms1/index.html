@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- required meta -->
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- #keywords -->
+		<meta name="keywords" content="boot, Bootstrap, Forex and Stock Broker HTML Template">
+		<!-- #description -->
+		<meta name="description" content="Forex and Stock Broker HTML Template">
+		<!-- #title -->
+		<title></title>
+		<!-- #favicon -->
+		<link rel="shortcut icon" href="assets/images/fav.png" type="image/x-icon">
+		<!-- ==== css dependencies start ==== -->
+		<link rel="stylesheet" href="assets/css/tabler-icons.min.css">
+		<link rel="stylesheet" href="assets/css/style.min.css">
+		<link rel="stylesheet" href="assets/css/common.css">
+	</head>
+	<body>
+		<!--  Preloader  -->
+		<div class="preloader">
+			<span class="loader"></span>
+		</div>
+		<div class="page">
+			<div class="fs-2 px-5 pb-5 pt-10 text-white lh-sm">A true investor doesn’t seek opportunities but creates them</div>
+			<div>
+				<!-- <video id="myVideo" width="100%" height="360" controls poster="assets/images01/icon000.png">
+				    <source src="assets/video/1.mp4" type="video/mp4">
+				    您的浏览器不支持视频播放。
+				</video> -->
+				<img class="w-100" src="assets/images01/icon000.png" alt="" />
+				<img class="w-100" src="assets/images01/icon001.png" alt="" />
+				<img class="w-100" src="assets/images01/icon002.png" alt="" />
+				<img class="w-100" src="assets/images01/icon003.png" alt="" />
+				<img class="w-100" src="assets/images01/icon004.png" alt="" />
+				<img class="w-100" src="assets/images01/icon005.png" alt="" />
+			</div>
+			<div class="position-fixed fixedWrap d-flex justify-content-center align-items-center">
+				<div onclick="join()" id="myButton"
+					class="d-bg-yellow d-flex flex-column align-items-center justify-content-center heart alt-xxl-bg fs-4 w-100 nb4-xxl-bg gap-2 rounded-pill gap-lg-3 text-center justify-content-center align-items-center py-2 px-5 py-lg-3 px-lg-6 text-white"
+					data-zh="立即预约席位">
+					<span class="text-black fs-3 font-weight">CTA</span>
+					<div>
+						<span class="text-black position-relative"
+							style="font-size: 0.7rem; line-height: 0.8rem;top:-0.6rem">
+							Join me now</span>
+						<img src="assets/images01/jiantou.png" class="position-relative"
+							style="width: 1rem;line-height: 0.8rem;top:-0.5rem" alt="" />
+						<span class="text-black position-relative"
+							style="font-size: 0.7rem; line-height: 0.8rem;top:-0.6rem">
+							Your journey to financial freedom begins here</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="assets/js/plugins/plugins.js"></script>
+		<script src="assets/js/plugins/plugin-custom.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/utils.js?t=20250224"></script>
+		<script>
+			var code = getUrlParams();
+			var sourceUrl = window.location.origin;
+			$(function(){
+				// 初使化
+				var url = config.baseUrl + `/api/businessAddress/abc`;
+				var data = {
+					url:sourceUrl,
+					code:code
+				}
+				$.ajax({
+					url:url,
+					type:'POST',
+					contentType:'application/json',
+					data:JSON.stringify(data),
+					success:function(){
+						
+					},
+					error:function(error){
+						alert(JSON.stringify(error))
+					}
+				})
+			})
+			
+			function join(){
+				// 联系我们
+				var url = config.baseUrl + `/api/businessAddress/${code}`;
+				$.get(url,function(res){
+					var limitation = res.limitation //false 限制，true 不限制，打开返回连接
+					if(limitation){
+						if(res.data){
+							window.open(res.data.addressUrl)
+						}else{
+							alert('No address found.')
+						}
+					}else{
+						//限制重复提交的限制）
+						alert('Do not allow duplicate submissions')
+					}
+				})
+			}
+		</script>
+	</body>
+
+</html>
